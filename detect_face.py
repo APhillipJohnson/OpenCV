@@ -1,13 +1,17 @@
 import cv2
 
 def detect():
-    face_cascade = cv2.CascadeClassifier('/home/nemo/opencv-3.0.0/data/haarcascades/haarcascade_frontalface_default.xml')
-    eye_cascade = cv2.CascadeClassifier('/home/nemo/opencv-3.0.0/data/haarcascades/haarcascade_eye.xml')
+    '''
+    This initializes the webcam, and creates a box around the face. 
+    It can take a little bit of time to redefine box after quick movements 
+    of face out of frame and back in.
+    '''
+    face = cv2.CascadeClassifier('/home/nemo/opencv-3.0.0/data/haarcascades/haarcascade_frontalface_default.xml')
     camera = cv2.VideoCapture(0)
     while (True):
         ret, frame = camera.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+        faces = face.detectMultiScale(gray, 1.3, 5)
 
             
         cv2.imshow('camera', frame)
