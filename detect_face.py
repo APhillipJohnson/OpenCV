@@ -8,10 +8,6 @@ def detect():
         ret, frame = camera.read()
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-        for (x,y,w,h) in faces:
-            img = cv2.rectangle(frame,(x,y),(x+w, y+h), (255, 0, 0),2)
-            roi_gray = gray[y:y+h, x:x+w]
-            eyes = eye_cascade.detectMultiScale(roi_gray, 1.03, 5, 0, (40, 40))
 
             
         cv2.imshow('camera', frame)
