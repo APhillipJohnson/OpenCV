@@ -1,10 +1,10 @@
 import cv2
+#sets pretaken image to be viewed as variable.
+base_pic = '/home/nemo/Pictures/base_picture.jpg'
 
-fp = '/home/nemo/Pictures/base_picture.jpg'
-
-def detect(fp):
+def detect(base_pic):
     face_cascade = cv2.CascadeClassifier('/home/nemo/opencv-3.0.0/data/haarcascades/haarcascade_frontalface_default.xml')
-    img = cv2.imread(fp)
+    img = cv2.imread(base_pic)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #gray colorspace req. for detection
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
     for (x,y,w,h) in faces:
@@ -13,4 +13,4 @@ def detect(fp):
     cv2.imshow('I have been detected!!', img)
     cv2.imwrite('/home/nemo/Pictures/base.jpg', img)
     cv2.waitKey(0)
-detect(fp)
+detect(base_pic)
